@@ -1408,7 +1408,7 @@
   .toggle-text {
      z-index: 0;
      position: relative;
-     margin-left: inherit;
+    
      display: inline-block;
      color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
      font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
