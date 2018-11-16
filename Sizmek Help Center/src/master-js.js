@@ -767,8 +767,12 @@ var currPageURL = window.location.href;
                                     '<ul class="group-list" style="overflow: hidden;display:none;">';
                                 for (var index = 0; index < additionalResources.children.length; index++) {
                                     if (additionalResources.children[index].v) {
+                                            var target = '';
+                                      if(additionalResources.children[index].checkItem){
+                                                target = ' target="_blank"';
+                                            }
                                         stringifiedElements += '<li class="section" id="' + additionalResources.children[index].id + '">' +
-                                            '<a class="sectionDrop" href="' + additionalResources.children[index].url + '" title="' + additionalResources.children[index].title + '">' + additionalResources.children[index].title + '</a></li>'
+                                            '<a class="sectionDrop" href="' + additionalResources.children[index].url +target +'" title="' + additionalResources.children[index].title + '">' + additionalResources.children[index].title + '</a></li>'
                                     }
                                 }
                             }
