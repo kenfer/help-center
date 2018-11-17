@@ -730,33 +730,51 @@ var currPageURL = window.location.href;
                             }
                         }
 
-                        function populateCurrentProduct() {
-                            var additionalResources = currentProduct.pop();
-                            for (var i = 0; i < currentProduct.length; i++) {
-                                if (currentProduct[i].v) {
-                                    if (currentProduct[i].type === "text") {
-                                        stringifiedElements += '<li class="mdx2">' +
-                                            '<i class="fa fa-angle-right" id="icon-category"></i>' +
-                                            '<a class="categoryDrop">' + currentProduct[i].title + '</a>' +
-                                            '<ul style="overflow: hidden; display: none;">';
-                                        for (var x = 0; x < currentProduct[i].children.length; x++) {
-                                            if (currentProduct[i].children[x].v) {
-                                                if (currentProduct[i].children[x].type === "category") {
-                                                    stringifiedElements += initializeCategory(currentProduct[i].children[x]);
-                                                } else if (currentProduct[i].children[x].type === "section") {
-                                                    stringifiedElements += initializeSection(currentProduct[i].children[x]);
-                                                } else if (currentProduct[i].children[x].type === "custom") {
-                                                    stringifiedElements += '<li class="section" id="' + currentProduct[i].children[x].id + '">' +
-                                                        '<a class="sectionDrop english" href="' + currentProduct[i].children[x].url + '">' + currentProduct[i].children[x].title + '</a>' +
-                                                        '</li>';
+                            function populateCurrentProduct() {
+                                var additionalResources = currentProduct.pop();
+                                for (var i = 0; i < currentProduct.length; i++) {
+                                    if (currentProduct[i].v) {
+                                        if (currentProduct[i].type === "text") {
+                                        
+                                            stringifiedElements += '<li class="mdx2">' +
+                                                '<i class="fa fa-angle-right" id="icon-category"></i>' +
+                                                '<a class="categoryDrop">' + currentProduct[i].title + '</a>' +
+                                                '<ul style="overflow: hidden; display: none;">';
+                                            for (var x = 0; x < currentProduct[i].children.length; x++) {
+                                                if (currentProduct[i].children[x].v) {
+                                                   
+                        
+                                                    if (currentProduct[i].children[x].type === "category") {
+                                                             console.log("category");
+                                                                   
+                                                        stringifiedElements += initializeCategory(currentProduct[i].children[x]);
+                                                    }  if (currentProduct[i].children[x].type === "section") {
+                                                        
+                                                        stringifiedElements += initializeSection(currentProduct[i].children[x]);
+                                                    }else if (currentProduct[i].children[x].type === "custom") {
+                                                        if (currentProduct[i].children[x].checkItem){
+                                                            var newTabs = ' target="_blank"'
+                                                       }
+                                                       else {
+                                                            var newTabs = ''
+                                                       }  
+                                                        stringifiedElements += '<li class="section" id="' + currentProduct[i].children[x].id +       '">' +
+                                                            '<a class="sectionDrop" href="'+currentProduct[i].children[x].url + '"'+newTabs+' >' + currentProduct[i].children[x].title + '</a>' +   
+                                                            '</li>'; 
+                                                     }
+                                                   
+                                        
                                                 }
                                             }
-                                        }
                                         stringifiedElements += '</ul></li>';
+                                
                                     } else if (currentProduct[i].type === "category") {
                                         stringifiedElements += initializeCategory(currentProduct[i]);
                                     } else if (currentProduct[i].type === "section") {
                                         stringifiedElements += initializeSection(currentProduct[i]);
+                                    }
+                                    else if (currentProduct[i].type ==="custom"){
+                                        stringifiedElements +=initializeCategory(currentProduct[i]);
                                     }
                                 }
                             }
@@ -767,8 +785,12 @@ var currPageURL = window.location.href;
                                     '<ul class="group-list" style="overflow: hidden;display:none;">';
                                 for (var index = 0; index < additionalResources.children.length; index++) {
                                     if (additionalResources.children[index].v) {
-                                        stringifiedElements += '<li class="section" id="' + additionalResources.children[index].id + '">' +
-                                            '<a class="sectionDrop" href="' + additionalResources.children[index].url + '" title="' + additionalResources.children[index].title + '">' + additionalResources.children[index].title + '</a></li>'
+                                    var target = '';
+                                    if(additionalResources.children[index].checkItem){
+                                        target = ' target="_blank"';
+                                    }
+                                    stringifiedElements += '<li class="section" id="' + additionalResources.children[index].id + '">' +
+                                            '<a class="sectionDrop" href="' + additionalResources.children[index].url + '" '+ target+' title="' + additionalResources.children[index].title + '">' + additionalResources.children[index].title + '</a></li>'
                                     }
                                 }
                             }

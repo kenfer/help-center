@@ -225,27 +225,29 @@ $(document).ready(function () {
         //edit button in a child item is click
         $('body').on('click', '.edit-child-button', function () {
             var $editParent = $(this).parent();
-         
-            currentItems[5].children[$editParent.index()-1].checkItem = true;
-            $editParent.children('input[type="checkbox"]').toggle();
-            $editParent.children('input[type="text"]').toggle();
+            var index = $editParent.parent().parent().index() -1;
+          
+          // console.log(currentItems[($editParent.index())]);
+            currentItems[index].children[$editParent.index()-1].checkItem = true;
+            $editParent.children('label.toggle-text').css('display','inline').show();
+            // $editParent.children(  'input[type="checkbox"]').show();
             $editParent.children('.item-name, .fa').css('display', 'none');
             $editParent.children('.type').toggleClass('currentSelect');
-
+          
 $(document).ready(function(){
     $('input[type="checkbox"]').click(function(){
         var checkbox = document.getElementById("checkme");
         if($(this).prop("checked") == true){
   
-            console.log(currentItems[5].children[$editParent.index()-1]);
-            currentItems[5].children[$editParent.index()-1].checkItem = true;
+            console.log(currentItems[index].children[$editParent.index()-1]);
+            currentItems[index].children[$editParent.index()-1].checkItem = true;
          
-            alert("Checkbox is checked.");
+         
             updateSaveButton();
         }
         else if($(this).prop("checked") == false){
-            currentItems[5].children[$editParent.index()-1].checkItem = false;
-          alert("Checkbox is unchecked.");
+            currentItems[index].children[$editParent.index()-1].checkItem = false;
+         
             updateSaveButton();
         }
     });
@@ -302,7 +304,7 @@ $(document).ready(function(){
             $currentParent.children('.item-name, .fa').css('display', 'block');
             $currentParent.children('select.type').val(dropdownValue);
             $currentParent.children('select').attr('disabled', 'disabled').css('background-color', '#e0e0e0');;
-            $currentParent.children('.edit-save-child, .cancel-edit-child').css('display', 'none');
+            $currentParent.children('label,.edit-save-child, .cancel-edit-child').css('display', 'none');
             $currentParent.children('.edit-child-button, .delete-child-button').css('display', 'inline');
 
         }
@@ -668,12 +670,12 @@ $("body").on("checked",".child-")
             reference = 'href=' + item.url;
              
 
-            checkBOx = '<label><input label="New Tab" class="open-tab" type="checkbox" style="display:none;"> Open</label>'
+            checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" ><span>Open Tab</span></label>'
         
             
    if (item.checkItem){
                var newTab = ' target="_blank"'
-               checkBOx = '<input class="open-tab" type="checkbox" style="display:none;" checked> '
+               checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" checked><span>Open Tab</span></label>'
              
              
             }
