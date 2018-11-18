@@ -1168,7 +1168,7 @@
  .menuManagement input[type="text"],.menuManagement input[type="url"]{
      float: left;
      height: 33px;
-     width: 25%;
+     width: 20%;
      border: 1px solid #a9a9a9;
      border-radius: 3px;
      margin-left: 5px;
@@ -1455,7 +1455,7 @@
      content: "";
      display: inline-block;
      box-sizing: border-box;
-     margin: 3px 9px 3px 1px;
+     margin: 0px 18px 3px 20px;
      border: solid 2px; /* Safari */
      border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
      border-radius: 2px;
