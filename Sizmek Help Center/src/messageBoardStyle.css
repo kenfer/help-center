@@ -1424,13 +1424,13 @@ body.dragging, body.dragging * {
     -webkit-appearance: none;
     z-index: -1;
     position: absolute;
-    left: 8px;
-    top: -8px;
+    left: 8%;
+    top: -8%;
     display: block;
     margin: 0;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    border-radius: 30%;
+    width: 20px;
+    height: 20px;
     background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
     box-shadow: none;
     outline: none;
@@ -1444,7 +1444,7 @@ body.dragging, body.dragging * {
 .toggle-text > span {
     display: inline-block;
     
-    padding-right: 2.5%;
+    padding-right: 1.5%;
     cursor: pointer;
     align-content: center;
 }
@@ -1552,3 +1552,15 @@ body.dragging, body.dragging * {
     border-color: transparent;
     background-color: currentColor;
 }
+#loader{
+    position: absolute;
+   left: 50%;
+   margin-left: -20px;
+    top: 40%;
+
+ }
+ #loader > label{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px;
+ }

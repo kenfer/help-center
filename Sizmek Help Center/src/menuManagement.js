@@ -228,7 +228,7 @@ console.log(currentItems[i].id == id);
         $('body').on('click', '.edit-child-button', function () {
             var $editParent = $(this).parent();
             var index = $editParent.parent().parent().index() -1;
-          
+            $editParent.css('height','40px');
           // console.log(currentItems[($editParent.index())]);
             currentItems[index].children[$editParent.index()-1].checkItem = true;
             $editParent.children('label.toggle-text').css('display','inline').show();
