@@ -161,6 +161,8 @@ $(document).ready(function () {
                 var $parent = $(this).parent();
                 var id = $parent.attr('id');
                 for (var i = 0; isNotFound && i < currentItemsLength; i++) {
+console.log(currentItems[i].id +"=="+ id);
+console.log(currentItems[i].id == id);
                     if (currentItems[i].id == id) {
                         editChildren = currentItems[i].children;
                         newObject = iniatializeNewObject($parent, i);
@@ -660,7 +662,7 @@ $("body").on("checked",".child-")
         var checkes = '<input type = "checkbox" id="checkme" class="box" name="but" visibility="show" ><p id="label">Open New Tab</p>'
         var select = '<select class="type" id="' + item.id + '">' + '<option value="text">Text</option>' + '<option value="category">Category</option>' + '<option value="section">Section</option>' + '<option value="custom">Custom</option>' + '</select>';
         item.type == 'category' ? select = '<select class="type" id="' + item.id + '"><option value="category">Category</option><option value="text">Text</option><option value="section">Section</option><option value="custom">Custom</option></select>' : item.type == 'section' ? select = '<select class="type" id="' + item.id + '"><option value="section">Section</option><option value="text">Text</option><option value="category">Category</option><option value="custom">Custom</option></select>' : item.type == 'custom' && (select = '<select class="type" id="' + item.id + '"><option value="custom">Custom</option><option value="text">Text</option><option value="category">Category</option><option value="section">Section</option></select>');
-        var children = item.children == undefined ? '<a class="' + visibilityHandlerClass + '" title="'+ vTitle +'"><i class="fa ' + eye + '" style="font-size: 20px;"></i></a><a class="edit-child-button" title="Edit"><i class="fa fa-pencil" style="font-size: 20px;"></i></a><a class="delete-child-button" title="Delete"><i class="fa fa-trash" style="font-size: 20px;"></i></a>' + '<a class="edit-save-child" title="Save"><i class="fa fa-check" style="font-size: 20px;"></i></a>' + '<a class="cancel-edit-child" title="Cancel"><i class="fa fa-times" style="font-size: 20px;"></i></a>' : '<a class="' + visibilityHandlerClass + '" title="Hide"><i class="fa ' + eye + '" style="font-size: 20px;"></i></a><a class="editButton" title="Edit"><i class="fa fa-pencil" style="font-size: 20px;"></i></a>' + '<a class="deleteButton" title="Delete"><i class="fa fa-trash" style="font-size: 20px;"></i></a>' + '<a class="editSaveButton" title="Save"><i class="fa fa-check" style="font-size: 20px;"></i></a>' + '<a class="editCancelButton" title="Cancel"><i class="fa fa-times" style="font-size: 20px;"></i></a><ul class="sublist" id="children-' + item.id + '"></ul></li>';
+        var children = isChild ? '<a class="' + visibilityHandlerClass + '" title="'+ vTitle +'"><i class="fa ' + eye + '" style="font-size: 20px;"></i></a><a class="edit-child-button" title="Edit"><i class="fa fa-pencil" style="font-size: 20px;"></i></a><a class="delete-child-button" title="Delete"><i class="fa fa-trash" style="font-size: 20px;"></i></a>' + '<a class="edit-save-child" title="Save"><i class="fa fa-check" style="font-size: 20px;"></i></a>' + '<a class="cancel-edit-child" title="Cancel"><i class="fa fa-times" style="font-size: 20px;"></i><ul class="sublist" id="children-' + item.id + '"></ul></a>' : '<a class="' + visibilityHandlerClass + '" title="Hide"><i class="fa ' + eye + '" style="font-size: 20px;"></i></a><a class="editButton" title="Edit"><i class="fa fa-pencil" style="font-size: 20px;"></i></a>' + '<a class="deleteButton" title="Delete"><i class="fa fa-trash" style="font-size: 20px;"></i></a>' + '<a class="editSaveButton" title="Save"><i class="fa fa-check" style="font-size: 20px;"></i></a>' + '<a class="editCancelButton" title="Cancel"><i class="fa fa-times" style="font-size: 20px;"></i></a><ul class="sublist" id="children-' + item.id + '"></ul></li>';
         var collapseIcon = "";
         var reference = "";
         var linkToZendesk = item.type != 'text' ? "link-zendesk" : "";
@@ -670,12 +672,12 @@ $("body").on("checked",".child-")
             reference = 'href=' + item.url;
              
 
-            checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" ><span>Open Tab</span></label>'
+            checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" ><span>OPEN NEW TAB</span></label>'
         
             
    if (item.checkItem){
                var newTab = ' target="_blank"'
-               checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" checked><span>Open Tab</span></label>'
+               checkBOx = '<label class="toggle-text" style="display:none;"><input label="New Tab" class="open-tab" type="checkbox" checked><span >OPEN NEW TAB</span></label>'
              
              
             }
